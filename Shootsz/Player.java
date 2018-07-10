@@ -1,31 +1,95 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Player here.
+ * User's character. This Class contains movement, collision detection, and firing of the gun
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ 
  */
 public class Player extends Spaceship
 {
+    private boolean canFire = true;
+    private boolean takeDamage = true;
+    int positionY = 0;
+    int positionX = 60;
     /**
-     * Act - do whatever the Player wants to do. This method is called whenever
+     * Act - do whatever the Word wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int speed = 4;
     public void act() 
     {
-        if(Greenfoot.isKeyDown("s")) {
-            setLocation(getX(), getY() + speed);
+       //Actor player = getOneIntersectingObject(Enemy.class);
+       World myWorld = getWorld();
+       //Actor enemy = getOneObjectAtOffset(0,0,Enemy.class);
+       /*
+       if(player !=null && takeDamage)
+       {
+           myWorld.removeObject(enemy);
+           ((HealthBar)getWorld().getObjects(HealthBar.class).get(0)).loseHealth();
+    
+           
+           
+           
+           Greenfoot.playSound("hitindicator.mp3");
+        }  
+       */
+        if (Greenfoot.isKeyDown("right"))
+        {
+
+            move(5);
+            
         }
-        if(Greenfoot.isKeyDown("w")) {
-            setLocation(getX(), getY() - speed);
+        if (Greenfoot.isKeyDown("left"))
+        {
+           move(-5);
+
         }
-        if(Greenfoot.isKeyDown("a")) {
-            setLocation (getX() - speed, getY());
+        if (Greenfoot.isKeyDown("up"))
+        {
+
+            moveUp();
+           
+            
         }
-        if(Greenfoot.isKeyDown("d")) {
-            setLocation (getX() + speed, getY());
+        if (Greenfoot.isKeyDown("down"))
+        {        
+            moveDown();
+
         }
+         if (!Greenfoot.isKeyDown("space")){
+           canFire = true; // Code is too fast for a human to press a button and expect only one projectile. Only allows one projectile per button press.
+        }
+       if (Greenfoot.isKeyDown("space") && canFire==true)
+       {    
+          fire(); 
+          canFire = false; 
+       }
+    }    
+    
+    public void moveDown()
+    {
+        int x = (getX());
+        int y = (getY() + 5);
+     
+        setLocation(x, y);
     }
+    public void moveUp()
+    {
+        int x = (getX());
+        int y = (getY() - 5);
+     
+        setLocation(x, y);
+    }
+    /**
+     *The fire method is called when a player presses the key to launch a projectile.
+     */
+    
+    public void fire() {
+       Greenfoot.playSound("gunsound.mp3"); // Plays the sound effect
+       
+       BulletPlayer bulletplayer = new BulletPlayer(); //Calls the BulletPlayer class
+       getWorld().addObject(bulletplayer,getX()+positionX,getY()+positionY); // Adds the projectile (BulletPlayer) actor at the location of the Player's x and y coordinate
+       
+        
+    }
+    
 }
