@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=BulletPlayer
+comment0.text=\n\ The\ Bullet\ Actor.\ \n\ \n\ \n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\n\ Moves\ the\ Bullet\ left\ because\ Player\ starts\ off\ pointing\ in\ that\ direction.\n
+comment2.params=
+comment2.target=void\ hitEnemy()
+comment2.text=\n\ Makes\ bullet\ disappear\ if\ hits\ border\ of\ world\n\ Makes\ bullet\ disappear\ if\ hits\ enemy\n
+comment3.params=
+comment3.target=boolean\ atWorldEdge()
+numComments=4

@@ -8,7 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-
+    private int randY;
+    private boolean spawn = true;
+    private int counter, enemies = 0;
+    private int MAX_ENEMIES = 6;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -19,5 +22,23 @@ public class MyWorld extends World
         super(1000, 600, 1); 
         Player p = new Player();
         addObject(p, 100, 300);
+        act();
+
+    }
+    
+    public void act() {
+        if (counter <= 30){  
+            counter += 1;
+        }
+        else {
+            counter = 0;
+            addEnemy();
+        }
+    }
+
+    public void addEnemy() {
+        randY = Greenfoot.getRandomNumber(600);
+        NormalEnemy e = new NormalEnemy();
+        addObject(e, 950, randY);
     }
 }

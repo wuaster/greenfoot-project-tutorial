@@ -14,6 +14,9 @@ public class NormalEnemy extends Spaceship
      */
     public void act() 
     {
-        // Add your action code here.
-    }    
+       move(-4);
+       if (getX() <= 5 || getX() >=getWorld().getWidth() - 10 || getY() >=getWorld().getHeight() - 10) {
+           getWorld().removeObject(this);
+        }
+    }  
 }

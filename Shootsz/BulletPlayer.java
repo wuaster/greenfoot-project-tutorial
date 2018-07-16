@@ -24,26 +24,21 @@ public class BulletPlayer extends Player
     */
    public void hitEnemy()
    {
-       //Actor player = getOneIntersectingObject(Enemy.class);
+       Actor enemy = getOneIntersectingObject(NormalEnemy.class);
        World myWorld = getWorld();
-       //Actor enemy = getOneObjectAtOffset(0,0,Enemy.class);
-       /*
-       if(player !=null)
-       {
-           
-    
-           myWorld.removeObject(enemy);
-           myWorld.removeObject(this);
-           
-           Greenfoot.playSound("hitindicator.mp3");
-          
-       }
-       */
-        if (atWorldEdge()){
+       if (atWorldEdge()){
         
            myWorld.removeObject(this);
            
         }
+       if (enemy !=null)
+       {
+              
+           myWorld.removeObject(enemy);
+                   
+           Greenfoot.playSound("hitmetal.mp3");
+           myWorld.removeObject(this);
+       }    
    }
    // Detects if the bullet has hit the edge of the world. If it has, it removes bullet from the world.
    public boolean atWorldEdge()

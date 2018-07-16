@@ -17,21 +17,17 @@ public class Player extends Spaceship
      */
     public void act() 
     {
-       //Actor player = getOneIntersectingObject(Enemy.class);
+       Actor enemy = getOneIntersectingObject(NormalEnemy.class);
        World myWorld = getWorld();
-       //Actor enemy = getOneObjectAtOffset(0,0,Enemy.class);
-       /*
-       if(player !=null && takeDamage)
+       
+       if(enemy !=null && takeDamage)
        {
            myWorld.removeObject(enemy);
-           ((HealthBar)getWorld().getObjects(HealthBar.class).get(0)).loseHealth();
-    
-           
-           
+           //((HealthBar)getWorld().getObjects(HealthBar.class).get(0)).loseHealth();
            
            Greenfoot.playSound("hitindicator.mp3");
         }  
-       */
+       
         if (Greenfoot.isKeyDown("right"))
         {
 
@@ -84,7 +80,7 @@ public class Player extends Spaceship
      */
     
     public void fire() {
-       Greenfoot.playSound("gunsound.mp3"); // Plays the sound effect
+       Greenfoot.playSound("laser.mp3"); // Plays the sound effect
        
        BulletPlayer bulletplayer = new BulletPlayer(); //Calls the BulletPlayer class
        getWorld().addObject(bulletplayer,getX()+positionX,getY()+positionY); // Adds the projectile (BulletPlayer) actor at the location of the Player's x and y coordinate
