@@ -1,5 +1,6 @@
 # greenfoot-project-tutorial
-to serve as an introduction to version control and java.
+to serve as an introduction and practical guide to my friends in java and topics such as version control, design patterns, efficiency, and proper documentation.
+
 
 WORK IN PROGRESS
 
